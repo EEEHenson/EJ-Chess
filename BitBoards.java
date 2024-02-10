@@ -49,27 +49,7 @@ public class BitBoards {
 				
 			}
 		}
-		
 		drawArray(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
-		System.out.println("white rook value = " + WR);
-		System.out.println("White knight value = " + WN);
-		System.out.println("white bishop value = " + WB);
-		System.out.println("White queen value = " + WQ);
-		System.out.println("white king value = " + WK);
-		System.out.println("White pawn value = " + WP);
-		System.out.println("black rook value = " + BR);
-		System.out.println("Black knight value = " + BN);
-		System.out.println("black bishop value = " + BB);
-		System.out.println("Black queen value = " + BQ);
-		System.out.println("black king value = " + BK);
-		System.out.println("Black pawn value = " + BP);
-		
-		BP = Moves.bPawnMove(BP);
-		WP = Moves.wPawnMove(WP);
-		System.out.println("Black pawn value = " + BP);
-		System.out.println("White pawn value = " + WP);
-		drawArray(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
-		
 	}
 	
     public static long convertStringToBitboard(String binary) {
