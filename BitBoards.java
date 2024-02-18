@@ -14,6 +14,9 @@ public class BitBoards {
 		};
 		long WP=0L, WR=0L, WN=0L, WB=0L, WQ=0L, WK=0L, BP=0L, BR=0L, BN=0L, BB=0L, BQ=0L, BK=0L;
 		arrayToBitboards(board, WP, WR, WN, WB, WQ, WK, BP, BR, BN, BB, BQ, BK);
+		// below is temp to show possible piece moves
+		String list=Moves.allWhiteMoves(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+		System.out.println(list);
 	}
 	
 	public static void arrayToBitboards(String[][] board, long WP, long WR, long WN, long WB, long WQ, long WK, long BP, long BR, long BN, long BB, long BQ, long BK){
