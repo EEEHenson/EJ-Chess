@@ -1,6 +1,15 @@
 public class Moves {
-  static long FILE_A=72340172838076673L;
-  static long FILE_H=-9187201950435737472L;
+	// Used to detect when a piece is at the boards edge
+	static long FILE_A= 72340172838076673L;
+	static long FILE_H= -9187201950435737472L;
+	
+	// Used to detect when a pawn has reached the promotion rank 
+	static long RANK_8 =    255L;
+	static long RANK_1 =    72057594037927936L;
+
+	static long BLACK_PIECES;// Used to store the position of all black pieces
+	static long WHITE_PIECES;// Used to store the position of all white pieces
+	static long EMPTY;
 
   public static String allWhiteMoves(long WP, long WN, long WB, long WR, long WQ, long WK, long BP, long BN, long BB, long BR, long BQ, long BK) {
 	BLACK_PIECES = BP|BN|BB|BR|BQ;// no black king to prevent illegal captures
