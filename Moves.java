@@ -45,5 +45,248 @@ public class Moves {
 	// need to add double move, en passent, and promotion
 	return list;
   }
+     public static String WNMoves(long WN) 
+  {
+	String list = "";
+	//Knight Moves
+	long Knight_Moves=(WN>>15)&EMPTY&~FILE_H; //Knight One left two Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+		Knight_Moves=(WN>>17)&EMPTY&~FILE_A; //Knight One right two Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+  	Knight_Moves=(WN>>10)&EMPTY&~FILE_A; //Knight Two right one Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN>>6)&EMPTY&~FILE_H; //Knight two left one Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<10)&EMPTY&~FILE_H; //Knight two left one Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<17)&EMPTY&~FILE_H; //Knight one left two Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<15)&EMPTY&~FILE_A; //Knight one right two Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<6)&EMPTY&~FILE_A; //Knight two right one Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	//Knight Captures
+
+	Knight_Moves=(WN>>15)&BLACK_PIECES&EMPTY&~FILE_H; //Knight One left two Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+		Knight_Moves=(WN>>17)&BLACK_PIECES&EMPTY&~FILE_A; //Knight One right two Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+  	Knight_Moves=(WN>>10)&BLACK_PIECES&EMPTY&~FILE_A; //Knight Two right one Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN>>6)&BLACK_PIECES&EMPTY&~FILE_H; //Knight two left one Forward
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<10)&BLACK_PIECES&EMPTY&~FILE_H; //Knight two left one Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<17)&BLACK_PIECES&EMPTY&~FILE_H; //Knight one left two Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<15)&BLACK_PIECES&EMPTY&~FILE_A; //Knight one right two Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	Knight_Moves=(WN<<6)&BLACK_PIECES&EMPTY&~FILE_A; //Knight two right one Backwards
+	for (int i=0; i<64; i++) {
+		if (((Knight_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	return list;
+  }
+  public static String WKMoves(long WK) 
+  {
+	String list = "";
+
+	long King_Moves=(WK>>8)&EMPTY; //King One Forward
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+
+	King_Moves=(WK<<8)&EMPTY; //King One Backwards
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<1)&EMPTY&~FILE_H; //King One Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>1)&EMPTY&~FILE_A; //King One Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>7)&EMPTY&~FILE_H; //King One Forward Diagonal Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>9)&EMPTY&~FILE_A; //King One Forward Diagonal Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<7)&EMPTY&~FILE_H; //King One Backwards Diagonal Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<9)&EMPTY&~FILE_A; //King One Backwards Diagonal Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	//King Captures
+
+	King_Moves=(WK>>8)&BLACK_PIECES&EMPTY; //King One Forward
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+
+	King_Moves=(WK<<8)&BLACK_PIECES&EMPTY; //King One Backwards
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<1)&BLACK_PIECES&EMPTY&~FILE_H; //King One Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>1)&BLACK_PIECES&EMPTY&~FILE_A; //King One Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>7)&BLACK_PIECES&EMPTY&~FILE_H; //King One Forward Diagonal Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK>>9)&BLACK_PIECES&EMPTY&~FILE_A; //King One Forward Diagonal Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<7)&BLACK_PIECES&EMPTY&~FILE_H; //King One Backwards Diagonal Left
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+	King_Moves=(WK<<9)&BLACK_PIECES&EMPTY&~FILE_A; //King One Backwards Diagonal Right
+	for (int i=0; i<64; i++) {
+		if (((King_Moves>>i)&1)==1) 
+		{
+			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		}
+	}
+
+	return list;
+ }
   
 }
