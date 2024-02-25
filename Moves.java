@@ -2,6 +2,8 @@ public class Moves {
 	// Used to detect when a piece is at the boards edge
 	static long FILE_A= 72340172838076673L;
 	static long FILE_H= -9187201950435737472L;
+	static long FILE_AB= 217020518514230019L;
+	static long FILE_GH= -4557430888798830400L;
 	
 	// Used to detect when a pawn has reached the promotion rank 
 	static long RANK_8 =    255L;
