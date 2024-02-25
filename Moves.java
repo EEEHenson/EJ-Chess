@@ -83,126 +83,69 @@ public class Moves {
 	// need to add double move, en passent, and promotion
 	return list;
   }
-     public static String WNMoves(long WN) 
-  {
-	String list = "";
-	//Knight Moves
-	long Knight_Moves=(WN>>15)&EMPTY&~FILE_H; //Knight One left two Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+public static String KnightMoves(long N) 
+	  {
+		String list = "";
+		//Knight Moves
+		long Knight_Moves=(N>>15)&NOT_MY_PIECES&~FILE_A; //Knight One left two Forward
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8-1)+(i/8+2)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-		Knight_Moves=(WN>>17)&EMPTY&~FILE_A; //Knight One right two Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N>>17)&NOT_MY_PIECES&~FILE_H; //Knight One right two Forward
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8+1)+(i/8+2)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-  	Knight_Moves=(WN>>10)&EMPTY&~FILE_A; //Knight Two right one Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+	  	Knight_Moves=(N>>10)&NOT_MY_PIECES&~FILE_GH; //Knight Two right one Forward
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8+2)+(i/8+1)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	Knight_Moves=(WN>>6)&EMPTY&~FILE_H; //Knight two left one Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N>>6)&NOT_MY_PIECES&~FILE_AB; //Knight two left one Forward
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8-2)+(i/8+1)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	Knight_Moves=(WN<<10)&EMPTY&~FILE_H; //Knight two left one Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N<<10)&NOT_MY_PIECES&~FILE_AB; //Knight two left one Backwards
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8-2)+(i/8-1)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	Knight_Moves=(WN<<17)&EMPTY&~FILE_H; //Knight one left two Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N<<17)&NOT_MY_PIECES&~FILE_A; //Knight one left two Backwards
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8-1)+(i/8-2)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	Knight_Moves=(WN<<15)&EMPTY&~FILE_A; //Knight one right two Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N<<15)&NOT_MY_PIECES&~FILE_H; //Knight one right two Backwards
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8+1)+(i/8-2)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	Knight_Moves=(WN<<6)&EMPTY&~FILE_A; //Knight two right one Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
+		Knight_Moves=(N<<6)&NOT_MY_PIECES&~FILE_GH; //Knight two right one Backwards
+		for (int i=0; i<64; i++) {
+			if (((Knight_Moves>>i)&1)==1) 
+			{
+				list+="("+(i%8+2)+(i/8-1)+","+(i%8)+(i/8)+"),";
+			}
 		}
-	}
-	//Knight Captures
-
-	Knight_Moves=(WN>>15)&BLACK_PIECES&EMPTY&~FILE_H; //Knight One left two Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-		Knight_Moves=(WN>>17)&BLACK_PIECES&EMPTY&~FILE_A; //Knight One right two Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-  	Knight_Moves=(WN>>10)&BLACK_PIECES&EMPTY&~FILE_A; //Knight Two right one Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	Knight_Moves=(WN>>6)&BLACK_PIECES&EMPTY&~FILE_H; //Knight two left one Forward
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	Knight_Moves=(WN<<10)&BLACK_PIECES&EMPTY&~FILE_H; //Knight two left one Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	Knight_Moves=(WN<<17)&BLACK_PIECES&EMPTY&~FILE_H; //Knight one left two Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	Knight_Moves=(WN<<15)&BLACK_PIECES&EMPTY&~FILE_A; //Knight one right two Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	Knight_Moves=(WN<<6)&BLACK_PIECES&EMPTY&~FILE_A; //Knight two right one Backwards
-	for (int i=0; i<64; i++) {
-		if (((Knight_Moves>>i)&1)==1) 
-		{
-			list+="("+(i%8)+(i/8+1)+","+(i%8)+(i/8)+"),";
-		}
-	}
-	return list;
-  }
+		return list;
+	  }
+	
   public static String WKMoves(long WK) 
   {
 	String list = "";
