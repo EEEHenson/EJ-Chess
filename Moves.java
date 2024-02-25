@@ -58,7 +58,8 @@ public class Moves {
 	return list;
 	}
 
-  
+
+// all possible White Pawn Moves
   public static String WPmoves(long WP) {
 	String list=""; // returns the inital position and possible position in terms of x1 y1 and x2 y2
 	
@@ -85,6 +86,8 @@ public class Moves {
 	// need to add double move, en passent, and promotion
 	return list;
   }
+
+// all possible Knight Moves
 public static String KnightMoves(long N) 
   {
 	String list = "";
@@ -147,7 +150,53 @@ public static String KnightMoves(long N)
 	}
 	return list;
 }
-	
+
+// all possible Rook Moves
+
+// all possible Bishope Moves
+public static String BishopMoves(long B) {
+		String list ="";
+		long i=B&~(B-1);
+		long possibility;
+		while(i != 0)
+		{
+			int ILocation=Long.numberOfTrailingZeros(i);
+			possibility=DiagonalAndADiagonal(ILocation)&NOT_MY_PIECES;
+			long j=possibility&~(possibility-1);
+			while(j!=0)
+			{
+				int index=Long.numberOfTrailingZeros(j);
+				list+=""+(ILocation%8)+(ILocation/8)+(index%8)+(index/8);
+			}
+		}
+		return list;
+	}
+
+// All possible Queen Moves
+public static String QueenMoves(long OCCUPIED,long Q) {
+        String list="";
+        long i=Q&~(Q-1);
+        long possibility;
+        while(i != 0)
+        {
+            int iLocation=Long.numberOfTrailingZeros(i);
+            possibility=(HorizontalAndVertical(iLocation)|DiagonalAndADiagonal(iLocation))&NOT_MY_PIECES;
+            long j=possibility&~(possibility-1);
+            while (j != 0)
+            {
+                int index=Long.numberOfTrailingZeros(j);
+                list+=""+(iLocation%8)+(iLocation/8)+", ("+(index%8)+(index/8+"): ");
+                possibility&=~j;
+                j=possibility&~(possibility-1);
+            }
+            Q&=~i;
+            i=Q&~(Q-1);
+        }
+        return list;
+    }
+
+
+// all possible King Moves
   public static String WKMoves(long WK) 
   {
 	String list = "";
