@@ -195,7 +195,28 @@ public static String QueenMoves(long OCCUPIED,long Q) {
         return list;
     }
 
-
+// All Possible Rook Moves
+	public static String RookMoves(long OCCUPIED,long R) {
+        String list="";
+        long i=R&~(R-1);
+        long possibility;
+        while(i != 0)
+        {
+            int iLocation=Long.numberOfTrailingZeros(i);
+            possibility=(HorizontalAndVertical(iLocation))&NOT_MY_PIECES;
+            long j=possibility&~(possibility-1);
+            while (j != 0)
+            {
+                int index=Long.numberOfTrailingZeros(j);
+                list+=""+(iLocation%8)+(iLocation/8)+", ("+(index%8)+(index/8+"): ");
+                possibility&=~j;
+                j=possibility&~(possibility-1);
+            }
+            R&=~i;
+            i=R&~(R-1);
+        }
+        return list;
+    }
 // all possible King Moves
   public static String WKMoves(long WK) 
   {
