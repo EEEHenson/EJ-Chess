@@ -167,7 +167,11 @@ public static String BishopMoves(long B) {
 			{
 				int index=Long.numberOfTrailingZeros(j);
 				list+=""+(ILocation%8)+(ILocation/8)+(index%8)+(index/8);
+				possibility&=~j;
+				j=possibility&~(possibility-1);
 			}
+			R&=~i;
+            		i=R&~(R-1);
 		}
 		return list;
 	}
