@@ -52,7 +52,7 @@ public class Moves {
   public static String allWhiteMoves(long WP, long WN, long WB, long WR, long WQ, long WK, long BP, long BN, long BB, long BR, long BQ, long BK) {
 	NOT_MY_PIECES = BP|BN|BB|BR|BQ;// no black king to prevent illegal captures
 	MY_PIECES = WP|WN|WB|WR|WQ;
-	OCCUPIED=WP|WN|WB|WR|WQ|WK|BP|BN|BB|BR|BQ|BK // Stores the location of all pieces
+	OCCUPIED=WP|WN|WB|WR|WQ|WK|BP|BN|BB|BR|BQ|BK; // Stores the location of all pieces
 	EMPTY=~OCCUPIED; // Stores the locations where there are no pieces
 	String list=WPmoves(WP);
 	return list;
