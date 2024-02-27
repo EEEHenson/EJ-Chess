@@ -11,6 +11,8 @@ public class Moves {
 
 	static long EMPTY;
 	static long OCCUPIED;
+	static long BLACK_PIECES;
+	static long WHITE_PIECES:
 	static long NOT_MY_PIECES;
 	static long MY_PIECES;
 	
@@ -50,7 +52,8 @@ public class Moves {
     }
 
   public static String allWhiteMoves(long WP, long WN, long WB, long WR, long WQ, long WK, long BP, long BN, long BB, long BR, long BQ, long BK) {
-	NOT_MY_PIECES = BP|BN|BB|BR|BQ;// no black king to prevent illegal captures
+	BLACK_PIECES=BP|BN|BB|BR|BQ;
+	NOT_MY_PIECES=~(WP|WN|WB|WR|WQ|WK|BK);// black king to prevent illegal captures;// no black king to prevent illegal captures
 	MY_PIECES = WP|WN|WB|WR|WQ;
 	OCCUPIED=WP|WN|WB|WR|WQ|WK|BP|BN|BB|BR|BQ|BK; // Stores the location of all pieces
 	EMPTY=~OCCUPIED; // Stores the locations where there are no pieces
