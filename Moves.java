@@ -348,5 +348,127 @@ public static String QueenMoves(long OCCUPIED,long Q) {
 
 	return list;
  }
+		// castling
+	public static String castleWhite(long WR, boolean CWK, boolean CWQ) {
+		String list="";
+		if (CWK&&(((1l<<CASTLE_ROOKS[0])&WR)!=0))
+		{
+			list+="7476";
+		}
+		if (CWQ&&(((1l<<CASTLE_ROOKS[0])&WR)!=0))
+		{
+			list+="7472";
+		}
+		return list;
+	}
+	
+	public static String castleBlack(long BR, boolean CBK, boolean CBQ) {
+		String list="";
+		if (CBK&&(((1l<<CASTLE_ROOKS[0])&BR)!=0))
+		{
+			list+="0406";
+		}
+		if (CBQ&&(((1l<<CASTLE_ROOKS[0])&BR)!=0))
+		{
+			list+="0602";
+		}
+		return list;
+	}
+	
+		// squares under attack
+	public static long dangerWhite(long BP, long BN, long BB, long BR, long BQ, long BK) {
+		long danger;
+		long i;
+		long possibility;
+		// Black Pawn
+		danger=((BP<<7)&~FILE_A);
+		danger|=((BP<<9)&~FILE_H);
+		// Knight
+		danger |= BN >>15&~FILE_A;
+		danger |= BN >>17&~FILE_H;
+		danger |= BN >>10&~FILE_GH;
+		danger |= BN >>6&~FILE_AB;
+		danger |= BN <<6&~FILE_GH;
+		danger |= BN <<10&~FILE_AB;
+		danger |= BN <<17&~FILE_A;
+		danger |= BN <<15&~FILE_H;
+		// Diagonal Attacks (Bishop and Queen)
+		long QB=BQ|BB;
+		i=QB&~(QB-1);
+		while (i!=0) {
+			int iLocation=Long.numberOfTrailingZeros(i);
+			possibility = DiagonalAndADiagonal(iLocation);
+			danger |= possibility;
+			QB&=~i;
+			i=QB&~(QB-1);	
+		}
+		// Horizontal and Vertical moves (Rook and Queen)
+		long QR=BQ|BR;
+		i=QR&~(QR-1);
+		while (i!=0) {
+			int iLocation=Long.numberOfTrailingZeros(i);
+			possibility = HorizontalAndVertical(iLocation);
+			danger |= possibility;
+			QR&=~i;
+			i=QR&~(QR-1);
+		}
+		// king
+		danger |= BK>>8;
+		danger |= BK<<8;
+		danger |= BK<<1&~FILE_A;
+		danger |= BK>>1&~FILE_H;
+		danger |= BK>>7&~FILE_A;
+		danger |= BK>>9&~FILE_H;
+		danger |= BK<<7&~FILE_H;
+		danger |= BK<<9&~FILE_A;
+		return danger;
+	}
+	public static long dangerBlack(long WP, long WN, long WB, long WR, long WQ, long WK) {
+		long danger;
+		long i;
+		long possibility;
+		// Black Pawn
+		danger=((WP>>7)&~FILE_A);
+		danger|=((WP>>9)&~FILE_H);
+		// Knight
+		danger |= WN >>15&~FILE_A;
+		danger |= WN >>17&~FILE_H;
+		danger |= WN >>10&~FILE_GH;
+		danger |= WN >>6&~FILE_AB;
+		danger |= WN <<6&~FILE_GH;
+		danger |= WN <<10&~FILE_AB;
+		danger |= WN <<17&~FILE_A;
+		danger |= WN <<15&~FILE_H;
+		// Diagonal Attacks (Bishop and Queen)
+		long QB=WQ|WB;
+		i=QB&~(QB-1);
+		while (i!=0) {
+			int iLocation=Long.numberOfTrailingZeros(i);
+			possibility = DiagonalAndADiagonal(iLocation);
+			danger |= possibility;
+			QB&=~i;
+			i=QB&~(QB-1);	
+		}
+		// Horizontal and Vertical moves (Rook and Queen)
+		long QR=WQ|WR;
+		i=QR&~(QR-1);
+		while (i!=0) {
+			int iLocation=Long.numberOfTrailingZeros(i);
+			possibility = HorizontalAndVertical(iLocation);
+			danger |= possibility;
+			QR&=~i;
+			i=QR&~(QR-1);
+		}
+		// king
+		danger |= WK>>8;
+		danger |= WK<<8;
+		danger |= WK<<1&~FILE_A;
+		danger |= WK>>1&~FILE_H;
+		danger |= WK>>7&~FILE_A;
+		danger |= WK>>9&~FILE_H;
+		danger |= WK<<7&~FILE_H;
+		danger |= WK<<9&~FILE_A;
+		return danger;
+	}
   
 }
