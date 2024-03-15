@@ -15,6 +15,7 @@ public class Moves {
 	static long WHITE_PIECES:
 	static long NOT_MY_PIECES;
 	static long MY_PIECES;
+	static long CASTLE_ROOKS[]={63,56,7,0};
 	
 	static long RankMasks[] =//from rank1 to rank8
 	    {
