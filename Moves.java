@@ -87,9 +87,29 @@ public class Moves {
 		list+=""+(i%8+1)+(i/8-1)+(i%8)+(i/8);
 		}
 	}
-	// need to add double move, en passent, and promotion
+	// need to add double move, and promotion
 	return list;
   }
+// En Passant for white
+	public static String whiteEP(long WP, long BP, String history) {
+		String list="";
+		int eFile=history.charAt(history.length()-1)-'0';
+		//en passant right
+        long EP = (WP << 1)&BP&RANK_5&~FILE_A&FileMasks[eFile];//shows piece to remove, not the destination
+        if (EP != 0)
+        {
+            int index=Long.numberOfTrailingZeros(EP);
+            list+=""+(index%8-1)+(index%8)+" E";
+        }
+        //en passant left
+        EP = (WP >> 1)&BP&RANK_5&~FILE_H&FileMasks[eFile];//shows piece to remove, not the destination
+        if (EP != 0)
+        {
+            int index=Long.numberOfTrailingZeros(EP);
+            list+=""+(index%8+1)+(index%8)+" E";
+        }
+		return list;
+	}
 
 // all possible Knight Moves
 public static String KnightMoves(long N) 
