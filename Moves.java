@@ -91,10 +91,10 @@ public class Moves {
 	return list;
   }
 // En Passant for white
-	public static String whiteEP(long WP, long BP, String history) {
-		String list="";
-		int eFile=history.charAt(history.length()-1)-'0';
-		//en passant right
+public static String whiteEP(long WP, long BP, String history) {
+	String list="";
+	int eFile=history.charAt(history.length()-1)-'0';
+	//en passant right
         long EP = (WP << 1)&BP&RANK_5&~FILE_A&FileMasks[eFile];//shows piece to remove, not the destination
         if (EP != 0)
         {
