@@ -160,21 +160,21 @@ public class UCI {
                         else if (((1L<<start)&Main.BR&1L)!=0) {Main.CBQ=false;}
                     }
                     
-                    Main.EP=Moves.makeMoveEP(Main.WP|Main.BP,moves.substring(i,i+4));
-                    Main.WR=Moves.makeMoveCastle(Main.WR, Main.WK|Main.BK, moves.substring(i,i+4), 'R');
-                    Main.BR=Moves.makeMoveCastle(Main.BR, Main.WK|Main.BK, moves.substring(i,i+4), 'r');
-                    Main.WP=Moves.makeMove(Main.WP, moves.substring(i,i+4), 'P');
-                    Main.WN=Moves.makeMove(Main.WN, moves.substring(i,i+4), 'N');
-                    Main.WB=Moves.makeMove(Main.WB, moves.substring(i,i+4), 'B');
-                    Main.WR=Moves.makeMove(Main.WR, moves.substring(i,i+4), 'R');
-                    Main.WQ=Moves.makeMove(Main.WQ, moves.substring(i,i+4), 'Q');
-                    Main.WK=Moves.makeMove(Main.WK, moves.substring(i,i+4), 'K');
-                    Main.BP=Moves.makeMove(Main.BP, moves.substring(i,i+4), 'p');
-                    Main.BN=Moves.makeMove(Main.BN, moves.substring(i,i+4), 'n');
-                    Main.BB=Moves.makeMove(Main.BB, moves.substring(i,i+4), 'b');
-                    Main.BR=Moves.makeMove(Main.BR, moves.substring(i,i+4), 'r');
-                    Main.BQ=Moves.makeMove(Main.BQ, moves.substring(i,i+4), 'q');
-                    Main.BK=Moves.makeMove(Main.BK, moves.substring(i,i+4), 'k');
+                    Main.EP=MakeMoves.makeMoveEP(Main.WP|Main.BP,moves.substring(i,i+4));
+                    Main.WR=MakeMoves.makeMoveCastle(Main.WR, Main.WK|Main.BK, moves.substring(i,i+4), 'R');
+                    Main.BR=MakeMoves.makeMoveCastle(Main.BR, Main.WK|Main.BK, moves.substring(i,i+4), 'r');
+                    Main.WP=MakeMoves.makeMove(Main.WP, moves.substring(i,i+4), 'P');
+                    Main.WN=MakeMoves.makeMove(Main.WN, moves.substring(i,i+4), 'N');
+                    Main.WB=MakeMoves.makeMove(Main.WB, moves.substring(i,i+4), 'B');
+                    Main.WR=MakeMoves.makeMove(Main.WR, moves.substring(i,i+4), 'R');
+                    Main.WQ=MakeMoves.makeMove(Main.WQ, moves.substring(i,i+4), 'Q');
+                    Main.WK=MakeMoves.makeMove(Main.WK, moves.substring(i,i+4), 'K');
+                    Main.BP=MakeMoves.makeMove(Main.BP, moves.substring(i,i+4), 'p');
+                    Main.BN=MakeMoves.makeMove(Main.BN, moves.substring(i,i+4), 'n');
+                    Main.BB=MakeMoves.makeMove(Main.BB, moves.substring(i,i+4), 'b');
+                    Main.BR=MakeMoves.makeMove(Main.BR, moves.substring(i,i+4), 'r');
+                    Main.BQ=MakeMoves.makeMove(Main.BQ, moves.substring(i,i+4), 'q');
+                    Main.BK=MakeMoves.makeMove(Main.BK, moves.substring(i,i+4), 'k');
                     Main.WhiteToMove=!Main.WhiteToMove;
                     break;
                 }
